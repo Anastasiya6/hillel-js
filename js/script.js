@@ -1,7 +1,5 @@
 'use strict';
 
-let hours = +prompt('Скільки годин?');
+const seconds = +prompt('Скільки годин?') * 3600;
 
-let seconds = hours * 3600;
-
-alert(`У ${hours} год. ${seconds} секунд`);
+alert(`${seconds} секунд`);
