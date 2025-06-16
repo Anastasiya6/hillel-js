@@ -2,20 +2,17 @@
 
 function padString(str, number, defaultChar, isAddChar = true) {
 
-    const argumentsLength = arguments.length;
     let messageError = '';
     const strLength = str.length;
 
-    switch (argumentsLength) {
+    switch (arguments.length) {
         case 0:
-            messageError = 'Не передано аргументів';
+            messageError += 'Не передано аргументів.';
             break;
         case 1:
-            messageError = 'Не передано другий так третій аргумент - число та символ';
-            break;
+            messageError += 'Не передано другий аргумент - число. ';
         case 2:
-            messageError = 'Не передано третій аргумент - символ';
-            break;
+            messageError += 'Не передано третій аргумент - символ.';
     }
     if(strLength > number){
         return str.substr(0,number);
