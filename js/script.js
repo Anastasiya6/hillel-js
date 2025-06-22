@@ -5,13 +5,13 @@ const array1 = [1,2,'Hello',6];
 console.log(array1);
 
 const arrayShift = (array) => {
-
+    const removeElem = array[0];
     for (let i = 1; i < array.length; i++) {
         array[i - 1] = array[i];
     }
     array.length =  array.length - 1;
-
-    return array;
+    console.log(array);
+    return removeElem;
 }
 
 console.log(arrayShift(array1));
