@@ -1,0 +1,67 @@
+import Student from "./Student.js"
+
+const student1 = new Student('Zoryana', 'Babych', 2017,[10,12,11,10,12,10,12,10,9,9,9,10,10,10,5,10,12,10,12,10,11,11,11,10]);
+console.log(student1.firstName + ' ' + student1.lastName);
+console.log('Вік ' + student1.getAge());
+console.log('Середній бал ' + student1.getGPA());
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.absent();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+student1.present();
+
+console.log(student1.summary());
+console.log(student1);
+
+const student2 = new Student('Zakhar', 'Babych', 2011,[7,7,5,10,11,10,5,10,9,9,9,5,5,7,5,10,4,3,12,10,9,9,9,5]);
+console.log(student2.firstName + ' ' + student2.lastName);
+console.log('Вік ' + student2.getAge());
+console.log('Середній бал ' + student1.getGPA());
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.absent();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.present();
+student2.absent();
+student2.present();
+student2.absent();
+
+console.log(student2.summary());
+console.log(student2);
