@@ -6,6 +6,7 @@ const createResultTemplate = (data) => {
 
     ul.classList.add('list-group','mb-3');
 
+
     for(const key in data){
         const li = document.createElement('li');
         li.classList.add('list-group-item');

@@ -6,6 +6,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault();
     event.stopPropagation();
 
+
     const{target: currentForm} = event;
 
     //We should find all elements in current form the tag name is: input, textarea

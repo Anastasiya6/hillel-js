@@ -8,6 +8,7 @@ const collectDataFromHTMLNodes = (fieldArr) => {
         return false;
     })
 
+
     if(!isValidNode) return null;
 
     const results = fieldArr.reduce((acc, {name, value}) => {
