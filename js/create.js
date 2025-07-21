@@ -17,3 +17,5 @@ const collectDataFromHTMLNodes = (fieldArr) => {
 
     return Object.values(results).length ? results : null;
 }
+
+

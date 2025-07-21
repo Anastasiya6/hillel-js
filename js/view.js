@@ -1,17 +1,44 @@
 'use strict';
 
-const createResultTemplate = (data) => {
-    if(typeof data !== "object" || !Object.values(data).length) return null;
-    const ul = document.createElement('ul');
+function createUI() {
 
-    ul.classList.add('list-group','mb-3');
+    const createTemplate = ({id, title, description, price}) => {
+        const wrapper = document.createElement('tr');
+        wrapper.setAttribute('data-product-id', id)
 
-    for(const key in data){
-        const li = document.createElement('li');
-        li.classList.add('list-group-item');
-        li.innerHTML = `<b>${key}:</b> ${data[key]}`;
-        ul.append(li);
+        const content = `
+                          <th scope="row">${id}</th>
+                          <td>${title}</td>
+                          <td>${description}</td>
+                          <td>${price}</td>
+                          <td>
+                            <div class="d-flex justify-content-end gap-1">
+                              <button class="btn btn-primary" data-edit-product>Edit</button>
+                              <button type="button" class="btn btn-danger" data-remove-product>Delete</button>
+                            </div>
+                          </td>
+         `.trim();
+
+        wrapper.innerHTML = content;
+        return wrapper;
     }
 
-    return ul;
+    const renderContact = (template) => {
+        if(!(template instanceof HTMLElement)) return null;
+
+        const productsList = document.querySelector(`[data-product-list] tbody`);
+        productsList.prepend(template)
+    }
+    const removeContact = (elementToRemove) => {
+        elementToRemove.remove();
+    }
+
+    return {
+        createTemplate,
+        renderContact,
+        removeContact
+    }
+
 }
+
+const ui = createUI();
