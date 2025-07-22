@@ -1,55 +1,39 @@
 'use strict';
 
-console.log(dataBase.getData());
-function createProduct() {
+function editProduct() {
+    // Handle form events
     const form = document.querySelector('[data-form]');
+
+    const inputs = Array.from(form.querySelectorAll('input'));
+
+    const selectedProductID = localStorage.getItem('selectedProductID');
+    let product = dataBase.getDataById(Number(selectedProductID));
+
+    inputs.forEach(input => {
+        const name = input.name;
+
+        if (product.hasOwnProperty(name)) {
+            input.value = product[name];
+        }
+    });
+
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         e.stopPropagation();
         const {target} = e;
-        const inputs = Array.from(form.querySelectorAll('input'));
+
         // Get data from the form
-        const data = inputs.reduce((acc, {name, value}) =>{
+        const data = inputs.reduce((acc, {name, value}) => {
             acc[name] = value;
             return acc;
         }, {});
 
-        saveProduct(data);
-        console.log(data);
-        console.log(data.title);
         target.reset()
+
+        dataBase.setData(data, product);
         window.location.href = 'index.html';
-
-        // const savedContact = dataBase.setData(data);
-        // const template = ui.createTemplate(savedContact);
-        // ui.renderContact(template);
     });
-}
-
-createProduct();
-
-function saveProduct(data) {
-    localStorage.setItem("product", JSON.stringify(data));
 
 }
 
-// const collectDataFromHTMLNodes = (fieldArr) => {
-//     if(!Array.isArray(fieldArr)) return null;
-//     const isValidNode = fieldArr.every((potentialInput) => {
-//         if(potentialInput instanceof HTMLInputElement) return true;
-//         if(potentialInput instanceof HTMLTextAreaElement) return true;
-//         return false;
-//     })
-//
-//     if(!isValidNode) return null;
-//
-//     const results = fieldArr.reduce((acc, {name, value}) => {
-//         if(value.trim() !== '') acc[name] = value;
-//         return acc;
-//     }, {})
-//
-//     return Object.values(results).length ? results : null;
-// }
-
-
-
+editProduct();

@@ -23,19 +23,20 @@ function createUI() {
         return wrapper;
     }
 
-    const renderContact = (template) => {
+    const renderProduct = (template) => {
         if(!(template instanceof HTMLElement)) return null;
 
         const productsList = document.querySelector(`[data-product-list] tbody`);
         productsList.prepend(template)
     }
+
     const removeContact = (elementToRemove) => {
         elementToRemove.remove();
     }
 
     return {
         createTemplate,
-        renderContact,
+        renderProduct,
         removeContact
     }
 
