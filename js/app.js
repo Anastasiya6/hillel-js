@@ -36,7 +36,7 @@ console.log(student1);
 const student2 = new Student('Zakhar', 'Babych', 2011,[7,7,5,10,11,10,5,10,9,9,9,5,5,7,5,10,4,3,12,10,9,9,9,5]);
 console.log(student2.firstName + ' ' + student2.lastName);
 console.log('Вік ' + student2.getAge());
-console.log('Середній бал ' + student1.getGPA());
+console.log('Середній бал ' + student2.getGPA());
 student2.present();
 student2.present();
 student2.present();
