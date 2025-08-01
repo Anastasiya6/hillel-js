@@ -9,7 +9,7 @@ class ObjectTracker{
     mark(obj){
        this.ws.add(obj);
     }
-    wasProcessed(){
+    wasProcessed(obj){
         if(this.ws.has(obj)){
             return true;
         }

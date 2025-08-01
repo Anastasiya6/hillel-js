@@ -16,8 +16,7 @@ const groupByCategory = (arrayObject) => {
 
     for(const el of arrayObject){
         if(el.category && el.category.name) {
-            let name = el.category.name;
-            name = name.toLowerCase();
+            let name = el.category;
             if (!CategoryMap.has(name)) {
                 CategoryMap.set(name, []);
             }
