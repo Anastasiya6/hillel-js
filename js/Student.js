@@ -12,22 +12,6 @@ function Student(firstName,lastName,yearBirth,grade) {
     const AVERAGE_VISIT = 0.9;
     const MAX_VISIT = 25;
 
-    Student.prototype.getAge = function() {
-        return new Date().getFullYear() - this.yearBirth;
-    }
-
-    Student.prototype.getGPA = function() {
-        if(!Array.isArray(this.grade)) throw new Error('You should send an array');
-
-        const {sum, count} = this.grade.reduce((accumulator, currentValue) => {
-            accumulator.sum += currentValue;
-            accumulator.count++;
-            return accumulator;
-        }, { sum: 0, count: 0 });
-
-        return (sum/count).toFixed(2);
-    }
-
     Student.prototype.present = function() {
         this.checkMaxVisited();
         this.visiting[this.currentValue] = true;
@@ -69,4 +53,19 @@ function Student(firstName,lastName,yearBirth,grade) {
     }
 }
 
+Student.prototype.getAge = function() {
+    return new Date().getFullYear() - this.yearBirth;
+}
+
+Student.prototype.getGPA = function() {
+    if(!Array.isArray(this.grade)) throw new Error('You should send an array');
+
+    const {sum, count} = this.grade.reduce((accumulator, currentValue) => {
+        accumulator.sum += currentValue;
+        accumulator.count++;
+        return accumulator;
+    }, { sum: 0, count: 0 });
+
+    return (sum/count).toFixed(2);
+}
 export default Student;
