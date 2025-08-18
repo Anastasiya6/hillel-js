@@ -1,5 +1,7 @@
 import HistoryTracker from "./HistoryTracker.js";
 
+HistoryTracker.popstate();
+
 let historyTracker = new HistoryTracker();
 historyTracker.push('/home');
 
@@ -7,8 +9,5 @@ historyTracker.push('/about');
 historyTracker.back();
 historyTracker.push('/contact');
 historyTracker.back();
-console.log(historyTracker);
+console.log(historyTracker.historyList);
 
-window.onpopstate = (event) => {
-    console.log('event.state ' + JSON.stringify(event.state));
-}
