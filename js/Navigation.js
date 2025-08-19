@@ -29,4 +29,4 @@ class Navigation {
 
 }
 
-const nav = new Navigation();
+export default Navigation
