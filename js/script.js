@@ -30,15 +30,3 @@ class Navigation {
 }
 
 const nav = new Navigation();
-
-// const list = document.querySelector('[data-list]');
-// //const link = document.querySelector('.navbar-nav');
-// //console.log(link);
-//
-// list.addEventListener("click", function (e) {
-//     console.log(e.target);
-//     console.log(window.location.pathname );
-//     //element.classList.add('new-class');
-//     const element = e.target;
-//     element.classList.toggle('active');
-// });
