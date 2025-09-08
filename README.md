@@ -1,1 +1,21 @@
-"# hillel-js" 
+Переписати ДЗ
+Ви маєте функцію fetchUserData(userId), яка повертає проміс із даними користувача (емуляція запиту до API).
+
+Потрібно написати функцію getUsersData(userIds), яка:
+
+Приймає масив userIds.
+Повертає проміс, що резолвиться в масив об’єктів користувачів.
+Якщо хоча б один запит завершується з помилкою — у результаті має повернутись масив успішних відповідей і масив помилок.
+Приклад виклику:
+
+Copy code
+const userIds = [1, 2, 3, 4, 5];
+
+getUsersData(userIds).then((result) => {
+console.log(
+
+Copy code
+"✅ Success:", result.success);
+console.log("❌ Errors:", result.errors);
+});
+на  async / await функції
