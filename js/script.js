@@ -7,7 +7,6 @@ const fetchUserData = (id) => {
     return fetch(url)
 }
 
-let users = [];
 let result = {
     success: [],
     errors: []
