@@ -21,10 +21,13 @@ function createDataBase() {
         return isValid;
     }
     const getData = () => {
-        const data = JSON.parse(localStorage.getItem("phonebook"));
-        if(data === null) return [];
-        return data;
-        //return DB;
+        try {
+            const data = localStorage.getItem("phonebook");
+            return data ? JSON.parse(data) : [];
+        } catch (error) {
+            console.error("Помилка при парсингу даних з localStorage:", error);
+            return [];
+        }
     }
     const setData = (data) => {
 
@@ -56,8 +59,9 @@ function createDataBase() {
         if(typeof id !== 'number') return null;
         const currentData = getData();
         const contactIndex = currentData.findIndex((currentData) => id === currentData.id );
-        const removedData = currentData.splice(contactIndex, 1);
+        if(contactIndex === -1) return null;
 
+        const removedData = currentData.splice(contactIndex, 1);
         localStorage.setItem('phonebook', JSON.stringify(currentData));
         if(!removedData.length) return null;
         return removedData[0];

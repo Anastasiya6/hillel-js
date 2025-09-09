@@ -11,12 +11,12 @@ function createUserInterface() {
     const inputs = Array.from(form.querySelectorAll('input'));
     const list = document.querySelector('[data-list=phoneList]')
     list.addEventListener('click', ({target}) => {
-
+        if(target.closest('[data-remove-contact]') === null) return;
         if(target.closest('[data-contact-id]') === null) return;
         const contactElement = target.closest('[data-contact-id]');
-        console.log(contactElement);
+
         const contactId = parseInt(contactElement.getAttribute('data-contact-id'));
-        console.log(contactId);
+
         const removeContact = dataBase.deleteData(contactId);
         if(removeContact !== null) {
             removedContact(contactElement);
