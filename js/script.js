@@ -4,7 +4,7 @@ const userIds = [1, 2, 3, 4, 5];
 
 const fetchUserData = (id) => {
     let url = `https://jsonplaceholder.typicode.com/users/${id}`;
-    return fetch(url)
+    return fetch(url).then((resp) => resp.json());
 }
 
 let result = {
@@ -18,29 +18,19 @@ const getUsersData = (data) => {
     let promises = [];
     for(let i = 0; i < userIds.length; i++){
 
-        let promise = fetchUserData(userIds[i])
-            .then((resp) => {
-                return resp.json()
-            })
-            .then((data) => {
-                result.success.push(data);
-                return result;
-            })
-            .catch(error => {
-                result.errors.push(error);
-                return result;
-            });
-            promises.push(promise);
+        let promise = fetchUserData(userIds[i]);
+             promises.push(promise);
     }
     return Promise.allSettled(promises).then((promiseResults) => {
         for (const promiseResult of promiseResults) {
             if (promiseResult.status === 'rejected') {
-                 return promiseResult.reason;
+                result.errors.push(promiseResult.reason);
             }
             if (promiseResult.status === 'fulfilled') {
-                return promiseResult.value;
+                result.success.push(promiseResult.value);
             }
         }
+        return result;
     });
 }
 
