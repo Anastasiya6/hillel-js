@@ -17,10 +17,13 @@ const getUsersData = async (data) => {
     const userIds = [...data];
     for (let i = 0; i < userIds.length; i++) {
         try {
-            let user = await fetchUserData(userIds[i]);
-            result.success.push(await user.json());
+            let response = await fetchUserData(userIds[i]);
+            if (!response.ok) {
+                throw new Error("Ответ сети был не ok.");
+            }
+            result.success.push(await response.json());
         } catch (error) {
-            result.success.push(error);
+            result.errors.push(error);
         }
     }
     return result;
