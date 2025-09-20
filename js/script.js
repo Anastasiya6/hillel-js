@@ -2,6 +2,11 @@ function createBus() {
     const topics = Object.create(null); // { [topic]: Set<Function> }
     console.log(topics);
     function on(topic, handler) {
+        if (!topics[topic]) {
+            topics[topic] = [];
+        }
+        topics[topic].push(handler);
+        return
         // TODO: 1) Ініціалізувати контейнер підписників для topic
         //       2) Додати handler
         //       3) Повернути функцію відписки
@@ -21,4 +26,10 @@ function createBus() {
     return { on, off, emit };
 }
 
-createBus();
+const bus = createBus();
+bus.on(
+    'tick', (x) => console.log('tick:', x));
+
+bus.emit('tick', { step: 1 }, 0);
+console.log('after schedule');
+// Очікування: лог хендлера з’являється пізніше за "after schedule".
