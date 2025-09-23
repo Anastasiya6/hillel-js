@@ -11,7 +11,7 @@ class Result extends React.Component {
     render() {
         return (
             <div>
-                <button onClick={this.handleClick}>Result
+                <button>Winner 
                 </button>
             </div>
         );
