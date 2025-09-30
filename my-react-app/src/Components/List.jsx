@@ -5,7 +5,6 @@ class List extends React.Component {
     constructor(props) {
         super(props);
         this.state = { values: [] };
-        console.log(this.props);
     }
 
     handleClick = (i,e) => {
@@ -20,12 +19,6 @@ class List extends React.Component {
             return { values: newValues };
         });
 
-      //  this.setState({ value: 'btn-pressed' });
-        // if (isPressed) {
-        //     btnClass += ' btn-pressed';
-        // } else if (isHovered) {
-        //     btnClass += ' btn-over';
-        // }
     }
 
     createList = () => {
