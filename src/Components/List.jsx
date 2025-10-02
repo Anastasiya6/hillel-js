@@ -1,4 +1,4 @@
-import React from 'React';
+import React from "react";
 
 class List extends React.Component {
 
@@ -23,7 +23,7 @@ class List extends React.Component {
 
     createList = () => {
         const { data } = this.props;
-        return data.map(data => <li key={data.id}><a href="#" className={this.state.values[data.id]} onClick={(e) => this.handleClick(data.id, e)}>{data.name}</a></li>);
+        return data.map(data => <li key={data.id}><a href="#" className={this.props.values[data.id]} onClick={(e) => this.handleClick(data.id, e)}>{data.name}</a></li>);
     }
 
     render() {
