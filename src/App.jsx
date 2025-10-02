@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import TaskList from './components/TaskList';
+import TaskForm from './components/TaskForm';
 
 class App extends Component {
     constructor(props) {
@@ -13,30 +15,15 @@ class App extends Component {
         };
     }
 
-    createList = () => {
-        return this.state.items.map(item => (
-            <li key={item.id}>
-                <a
-                    href="#"
-                    className={item.state}
-                    onClick={(e) => this.handleClick(item.id, e)}
-                >
-                    {item.name}
-                </a>
-            </li>
-        ));
-    };
-
     handleClick = (id, e) => {
         e.preventDefault();
-        this.setState(prevState => {
-            const updated = prevState.items.map(item =>
+        this.setState(prevState => ({
+            items: prevState.items.map(item =>
                 item.id === id
                     ? { ...item, state: item.state === 'link-success' ? 'link-primary' : 'link-success' }
                     : item
-            );
-            return { items: updated };
-        });
+            )
+        }));
     };
 
     handleChange = (event) => {
@@ -45,20 +32,13 @@ class App extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.setState(prevState => {
-            const newValues = [...prevState.items];
-            const lastIndex = prevState.items.length;
-            newValues.push({
-                id: lastIndex + 1,
-                name: prevState.title,
-                state: 'link-primary'
-            });
-
-            return {
-                items: newValues,
-                title: ''
-            };
-        });
+        this.setState(prevState => ({
+            items: [
+                ...prevState.items,
+                { id: prevState.items.length + 1, name: prevState.title, state: 'link-primary' }
+            ],
+            title: ''
+        }));
     };
 
     render() {
@@ -69,37 +49,17 @@ class App extends Component {
                     <div className="row">
                         <div className="col-md-3">
                             <nav>
-                                <ul>
-                                    {this.createList()}
-                                </ul>
+                                <TaskList items={this.state.items} onClick={this.handleClick} />
                             </nav>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col-4">
-                            <form onSubmit={this.handleSubmit}>
-                                <div className="mb-3">
-                                    <label className="form-label">Task title</label>
-                                    <input
-                                        type="text"
-                                        name="title"
-                                        value={this.state.title}
-                                        onChange={this.handleChange}
-                                        className="form-control"
-                                        placeholder="Title"
-                                        required
-                                    />
-                                </div>
-                                <div className="d-flex justify-content-between">
-                                    <div>
-                                        <input
-                                            type="submit"
-                                            className="btn btn-primary"
-                                            value="Create Task!"
-                                        />
-                                    </div>
-                                </div>
-                            </form>
+                            <TaskForm
+                                title={this.state.title}
+                                onChange={this.handleChange}
+                                onSubmit={this.handleSubmit}
+                            />
                         </div>
                     </div>
                 </div>
