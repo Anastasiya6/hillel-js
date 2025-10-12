@@ -17,7 +17,6 @@ function App() {
               </div>
           )}
         <button type="button" onClick={() => setIsVisible(!isVisible)} className="btn btn-primary">Unmount Timer</button>
-        {/*  <Counter />*/}
     </div>
   )
 }
