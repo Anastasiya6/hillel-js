@@ -2,48 +2,40 @@ import {useState,useEffect,useRef } from "react";
 
 const TimerFunc = () => {
     let timer = document.querySelector('.timer');;
-    const [intervalId, setIntervalId] = useState(null);
     const [seconds, setSeconds] = useState(localStorage.getItem('seconds') ? parseInt(localStorage.getItem('seconds')) : 0);
+    const intervalRef = useRef(null);
 
-    const timerFunc = () => {
-        const id = setInterval(() => {
-            setSeconds((prevSeconds) => prevSeconds + 1);
-            console.log('Updated!');
-        }, 1000);
-        setIntervalId(id);
-    }
     const startTimer = () => {
-        if (intervalId) return;
+        if ( intervalRef.current ) return;
         timer.classList.remove('text-danger');
-        const id = setInterval(() => {
+        intervalRef.current = setInterval(() => {
             setSeconds((prevSeconds) => prevSeconds + 1);
             console.log('Updated!');
         }, 1000);
-        setIntervalId(id);
     };
 
     const stopTimer = () => {
-        clearInterval(intervalId);
-        setIntervalId(null);
+        clearInterval(intervalRef.current );
+        intervalRef.current = null;
         timer.classList.add('text-danger');
 
     };
 
     const resetTimer = () => {
         setSeconds(0);
-        clearInterval(intervalId);
-        setIntervalId(null);
+        clearInterval(intervalRef.current);
+        intervalRef.current = null;
     };
     useEffect(() => {
-        console.log('useEffect');
-        const id = setInterval(() => {
+        if (intervalRef.current) return;
+        intervalRef.current = setInterval(() => {
             setSeconds((prevSeconds) => prevSeconds + 1);
             console.log('Updated!');
         }, 1000);
-        setIntervalId(id);
+
         return () => {
             console.log('unmount');
-            clearInterval(id)};
+            clearInterval(intervalRef.current);}
     }, []);
 
     useEffect(() => {

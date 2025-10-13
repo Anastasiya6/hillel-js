@@ -1,7 +1,7 @@
 import Timer from './components/Timer';
-import Time from './components/Time';
+
 import TimerFunc from './components/TimerFunc';
-import Counter from './components/Counter';
+
 import { useState } from 'react'
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
 
           {isVisible && (
               <div className="mb-4">
-                  <Timer />
+                  <TimerFunc />
               </div>
           )}
         <button type="button" onClick={() => setIsVisible(!isVisible)} className="btn btn-primary">Unmount Timer</button>
