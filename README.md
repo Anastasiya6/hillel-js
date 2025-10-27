@@ -1,16 +1,15 @@
-# React + Vite
+Створіть класовий компонент Timer, який:
+Відображає число секунд, що пройшли з моменту монтування компонента.
+Має кнопки Start, Stop і Reset.
+Використайте методи життєвого циклу:
+componentDidMount – щоб запустити інтервал, який збільшує лічильник кожну секунду.
+componentDidUpdate – щоб у консоль виводилось повідомлення "Updated: <значення>", коли змінюється кількість секунд.
+componentWillUnmount – щоб очищати інтервал, коли компонент видаляється.
+Додайте кнопку Unmount Timer, яка повністю видаляє компонент з DOM (через умовний рендеринг у батьківському компоненті).
+Додатково:
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Реалізуйте збереження стану таймера у LocalStorage (щоб при перезавантаженні сторінки час відновлювався).
+Зробіть стилізацію через CSS (наприклад, при зупиненому таймері цифри стають червоними).
+Домашку виконати за допомогою класових і функціональних компонентів.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Тобто має бути 2 версії рішення: класово і функціонально
